@@ -2,111 +2,101 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Briefcase, GraduationCap, Cpu, Cloud, Globe } from "lucide-react";
-
-const TIMELINE_DATA = [
-  {
-    title: "Computer Science Student",
-    company: "IIIT-Delhi, India",
-    date: "2023 - 2027 (Expected)",
-    description: "ICCR Scholar pursuing B.Tech in CSE. Focusing on high-performance algorithms, web systems, and database management.",
-    icon: <GraduationCap className="text-primary" />,
-    tech: ["Java", "Python", "C", "Data Structures"]
-  },
-  {
-    title: "Full Stack Developer",
-    company: "Personal Projects",
-    date: "2025 - Present",
-    description: "Building robust applications like 'Safe-pass' (Kotlin) and 'Service-Booking-Apps' (Python/Java). Expert in creating seamless GUI experiences with Next.js and Django.",
-    icon: <Globe className="text-accent" />,
-    tech: ["Next.js", "Java", "Kotlin", "Django", "PostgreSQL"]
-  },
-  {
-    title: "ML & Game Researcher",
-    company: "Academic Projects",
-    date: "2024 - Present",
-    description: "Developing interactive simulations like 'Angry-Bird-game' (Java) and exploring Machine Learning optimizations for system schedulers and image recognition.",
-    icon: <Cpu className="text-primary" />,
-    tech: ["Machine Learning", "Java", "Python", "Kotlin"]
-  }
-];
-
-const TimelineItem = ({ item, index }: { item: typeof TIMELINE_DATA[0], index: number }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.2 }}
-      viewport={{ once: true }}
-      className={`relative flex items-center justify-between mb-8 w-full ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
-    >
-      <div className="hidden md:block w-5/12" />
-
-      <div className="z-20 flex items-center order-1 bg-slate-900 border border-white/10 shadow-xl w-10 h-10 rounded-full justify-center">
-        {item.icon}
-      </div>
-
-      <div className="order-1 glass rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-6 border border-white/5 hover:border-primary/30 transition-colors group">
-        <span className="mb-3 font-bold text-primary text-sm uppercase tracking-widest">{item.date}</span>
-        <h3 className="mb-2 font-bold text-white text-xl group-hover:text-primary transition-colors">{item.title}</h3>
-        <p className="text-sm font-medium leading-snug tracking-wide text-muted-foreground text-opacity-100 mb-4">
-          {item.company} — {item.description}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {item.tech.map((t) => (
-            <span key={t} className="text-[10px] uppercase font-bold px-2 py-1 bg-white/5 rounded-md text-muted-foreground">
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+import { GithubIcon as Github, LinkedinIcon as Linkedin, InstagramIcon as Instagram, TwitterIcon as Twitter } from "@/components/Icons";
 
 export default function About() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0.6, 0.9], [1, 1.1]);
-  const filter = useTransform(scrollYProgress, [0.6, 0.9], ["blur(0px)", "blur(20px)"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
+
+  const stats = [
+    { label: "Total Projects", value: "20+", desc: "Open source & private" },
+    { label: "Certificates", value: "4", desc: "Security, AI & Web Dev" },
+    { label: "Experience", value: "3 Yrs", desc: "Building full-stack apps" },
+    { label: "Technologies", value: "10+", desc: "Languages & Frameworks" },
+  ];
 
   return (
-    <section id="about" ref={containerRef} className="py-20 relative overflow-hidden bg-slate-950/50">
+    <section id="about" ref={containerRef} className="py-24 relative overflow-hidden bg-zinc-950/80">
       <motion.div
-        style={{ opacity, scale, filter }}
-        className="container mx-auto px-6"
+        style={{ opacity, y }}
+        className="container mx-auto px-6 max-w-6xl"
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.2 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            The <span className="text-primary text-glow font-heading">Journey</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A timeline of building, scaling, and researching at the intersection of web technology and artificial intelligence.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left Column: Bio & Socials */}
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-white uppercase tracking-tight">
+                About <span className="text-cyan-500">Me</span>
+              </h2>
+              <div className="w-20 h-1 bg-cyan-500 mb-8 rounded-full" />
+              <p className="text-lg text-zinc-400 leading-relaxed font-light">
+                A Computer Science undergraduate student specializing in <span className="text-white font-medium">Full-Stack Web Development, Agentic AI, and Explainable Machine Learning</span>. Experienced in architecting scalable web applications (React, Next.js, Node.js, FastAPI) and integrating them with autonomous multi-agent platforms (LangGraph, Vertex AI, Google ADK).
+              </p>
+              <p className="text-lg text-zinc-400 leading-relaxed mt-4 font-light">
+                Proficient in building robust backend systems (PostgreSQL, REST APIs) and explainable ML models (XGBoost, SHAP) for scientific forecasting (RDKit). Passionate about developing immersive 3D interfaces (Three.js) and intelligent platforms that combine complex backend AI engineering with seamless frontend user experiences.
+              </p>
+            </div>
 
-        <div className="relative wrap overflow-hidden p-0 h-full">
-          <div className="absolute border-opacity-20 border-white h-full border left-1/2 hidden md:block" />
+            <div className="pt-4 border-t border-zinc-800">
+              <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">Connect</h3>
+              <div className="flex gap-4">
+                {[
+                  { icon: <Github size={20} />, url: "https://github.com/Tamim544", name: "GitHub" },
+                  { icon: <Linkedin size={20} />, url: "https://www.linkedin.com/in/tamim-chowdhury-546a47262", name: "LinkedIn" },
+                  { icon: <Instagram size={20} />, url: "https://www.instagram.com/tamimzenith", name: "Instagram" },
+                  { icon: <Twitter size={20} />, url: "#", name: "Twitter" }
+                ].map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all hover:-translate-y-1"
+                    title={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
 
-          {TIMELINE_DATA.map((item, i) => (
-            <TimelineItem key={i} item={item} index={i} />
-          ))}
+          {/* Right Column: Stats Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-2xl hover:border-cyan-500/30 transition-colors group"
+              >
+                <h3 className="text-4xl font-black text-white group-hover:text-cyan-400 transition-colors mb-2">
+                  {stat.value}
+                </h3>
+                <h4 className="text-sm font-bold text-zinc-300 uppercase tracking-wider mb-1">
+                  {stat.label}
+                </h4>
+                <p className="text-xs text-zinc-500 font-medium">
+                  {stat.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
       </motion.div>
-
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 blur-[150px] -z-10 rounded-full" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 blur-[150px] -z-10 rounded-full" />
+      
+      {/* Background Decor */}
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none transform translate-x-1/2 -translate-y-1/2" />
     </section>
   );
 }
