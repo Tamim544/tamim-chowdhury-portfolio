@@ -4,6 +4,7 @@ import React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function FloatingIDCard() {
+  const basePath = process.env.NODE_ENV === 'production' ? '/tamim-chowdhury-portfolio' : '';
   // Motion values to track mouse position relative to the card
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -54,7 +55,7 @@ export default function FloatingIDCard() {
           <div className="w-28 h-28 rounded-xl bg-zinc-800 border-2 border-zinc-700 overflow-hidden relative group-hover:border-cyan-400 transition-colors duration-300 shadow-inner">
             <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent z-10" />
             <img
-              src="/your-avatar.jpg"
+              src={`${basePath}/your-avatar.jpg`}
               alt="Profile"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
             />

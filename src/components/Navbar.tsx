@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const basePath = process.env.NODE_ENV === 'production' ? '/tamim-chowdhury-portfolio' : '';
 
   return (
     <>
@@ -13,7 +14,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img 
-              src="/your-avatar.jpg" 
+              src={`${basePath}/your-avatar.jpg`} 
               alt="Tamim Chowdhury" 
               className="w-10 h-10 rounded-full object-cover border-2 border-cyan-500/50 shadow-[0_0_10px_rgba(6,182,212,0.3)] hover:border-cyan-400 transition-colors cursor-pointer" 
             />

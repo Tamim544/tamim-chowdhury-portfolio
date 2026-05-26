@@ -7,6 +7,7 @@ import FloatingIDCard from "./FloatingIDCard";
 import Marquee from "./Marquee";
 
 export default function Hero() {
+  const basePath = process.env.NODE_ENV === 'production' ? '/tamim-chowdhury-portfolio' : '';
   const { scrollYProgress } = useScroll();
 
   // Vanish effect as we scroll down: fade out and slightly scale up
@@ -100,7 +101,7 @@ export default function Hero() {
               View Projects
             </button>
             <a
-              href="/CV_Tamim_Chowdhury.pdf"
+              href={`${basePath}/CV_Tamim_Chowdhury.pdf`}
               download="CV_Tamim_Chowdhury.pdf"
               className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 bg-zinc-900/50 text-white font-bold hover:bg-zinc-800 transition-all flex items-center justify-center hover:scale-105 active:scale-95 uppercase tracking-wide text-sm"
             >
