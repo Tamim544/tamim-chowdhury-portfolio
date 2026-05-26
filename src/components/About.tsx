@@ -51,7 +51,7 @@ export default function About() {
                   { icon: <Github size={20} />, url: "https://github.com/Tamim544", name: "GitHub" },
                   { icon: <Linkedin size={20} />, url: "https://www.linkedin.com/in/tamim-chowdhury-546a47262", name: "LinkedIn" },
                   { icon: <Instagram size={20} />, url: "https://www.instagram.com/tamimzenith", name: "Instagram" },
-                  { icon: <Twitter size={20} />, url: "#", name: "Twitter" }
+                  { icon: <Twitter size={20} />, url: "https://x.com/tzenith61?s=21", name: "Twitter" }
                 ].map((social, idx) => (
                   <a
                     key={idx}
