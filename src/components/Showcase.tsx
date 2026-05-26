@@ -204,15 +204,108 @@ export default function Showcase() {
   }, []);
 
   const TECH_STACK = [
-    { name: "Python", color: "text-blue-400", dot: "🔵" },
-    { name: "React", color: "text-cyan-400", dot: "⚛️" },
-    { name: "Next.js", color: "text-white", dot: "⬛" },
-    { name: "Tailwind CSS", color: "text-cyan-300", dot: "🌊" },
-    { name: "Node.js", color: "text-green-500", dot: "🟢" },
-    { name: "PostgreSQL", color: "text-blue-500", dot: "🐘" },
-    { name: "TypeScript", color: "text-blue-400", dot: "📘" },
-    { name: "Docker", color: "text-blue-500", dot: "🐳" },
+    {
+      name: "React",
+      category: "Frontend",
+      color: "text-cyan-400",
+      bgHover: "hover:bg-cyan-500/10",
+      borderHover: "hover:border-cyan-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)" />
+        </svg>
+      ),
+    },
+    {
+      name: "Next.js",
+      category: "Fullstack",
+      color: "text-white",
+      bgHover: "hover:bg-white/10",
+      borderHover: "hover:border-white/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.166 14.195l-3.32-4.996V16.2h-1.5V7.8h1.833l3.655 5.503V7.8h1.5v8.395h-2.168zM17.5 16.2h-1.5v-3.75h-2.25v-1.2h2.25v-2.25h1.5v2.25h2.25v1.2h-2.25v3.75z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Python",
+      category: "Backend / ML",
+      color: "text-blue-400",
+      bgHover: "hover:bg-blue-500/10",
+      borderHover: "hover:border-blue-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.04 4.54c1.23 0 2.23.16 3.01.44.82.3 1.25.75 1.48 1.44l.02.08h-2.88v-1.13c0-.32-.23-.59-.57-.59H9.9c-.34 0-.58.27-.58.59v3.08h6.29c1.69 0 2.76.67 3.2 2.05.41 1.29.35 2.82-.16 4.14-1.29.35-2.85.5-4.6.5-1.76 0-3.32-.15-4.6-.5-.5-.11-1.02-.38-1.02-.9V12.7H5.56c-.5 0-.91-.41-.91-.91V7.95c0-1.84 1.34-3.41 3.19-3.41h4.2zm-2.73 2.1c-.42 0-.76.34-.76.76 0 .42.34.76.76.76.42 0 .76-.34.76-.76 0-.42-.34-.76-.76-.76zm5.34 6.75c.42 0 .76.34.76.76 0 .42-.34.76-.76.76-.42 0-.76-.34-.76-.76 0-.42.34-.76.76-.76z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Tailwind CSS",
+      category: "Styling",
+      color: "text-cyan-300",
+      bgHover: "hover:bg-cyan-400/10",
+      borderHover: "hover:border-cyan-400/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 6c-2.4 0-4 1.6-4 4 0 1.6.8 2.8 2 3.6-1.2-.4-2-.8-2.4-1.6l-1.6 1.6C7.6 15.6 9.2 16 12 16c2.4 0 4-1.6 4-4 0-1.6-.8-2.8-2-3.6 1.2.4 2 .8 2.4 1.6l1.6-1.6C16.4 6.4 14.8 6 12 6zm-6 6c-2.4 0-4 1.6-4 4 0 1.6.8 2.8 2 3.6-1.2-.4-2-.8-2.4-1.6L0 19.6C1.6 21.6 3.2 22 6 22c2.4 0 4-1.6 4-4 0-1.6-.8-2.8-2-3.6 1.2.4 2 .8 2.4 1.6l1.6-1.6C10.4 12.4 8.8 12 6 12z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Node.js",
+      category: "Backend",
+      color: "text-green-500",
+      bgHover: "hover:bg-green-500/10",
+      borderHover: "hover:border-green-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M11.8 1.4c-.4-.2-.8-.2-1.2 0L2.2 6c-.4.2-.6.7-.6 1.1v9.6c0 .4.2.9.6 1.1l8.4 4.8c.4.2.8.2 1.2 0l8.4-4.8c.4-.2.6-.7.6-1.1V7.1c0-.4-.2-.9-.6-1.1l-8.4-4.6zM12 21.3l-7.3-4.2V8.7l7.3 4.2v8.4zm.5-9.2l-7.3-4.2 7.3-4.2 7.3 4.2-7.3 4.2zm7.3 4.9l-7.3 4.2v-8.4l7.3-4.2v8.4z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "PostgreSQL",
+      category: "Database",
+      color: "text-blue-500",
+      bgHover: "hover:bg-blue-600/10",
+      borderHover: "hover:border-blue-600/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M21 16.5C21 16.5 19.5 21 12 21 4.5 21 3 16.5 3 16.5V7.5C3 7.5 4.5 3 12 3 19.5 3 21 7.5 21 7.5V16.5zM12 5.5C7.5 5.5 5 8 5 8v8s2.5 2.5 7 2.5 7-2.5 7-2.5V8s-2.5-2.5-7-2.5zM10.5 15h3v-1.5h-3V15zm0-3h3v-1.5h-3V12zm0-3h3V7.5h-3V9z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "TypeScript",
+      category: "Language",
+      color: "text-blue-400",
+      bgHover: "hover:bg-blue-400/10",
+      borderHover: "hover:border-blue-400/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M2 2h20v20H2z" fill="none"/>
+          <path d="M12.2 15.6c0-1.8-1.5-2.2-3.1-2.6-1.5-.4-2-.8-2-1.4 0-.8.7-1.3 1.9-1.3 1.2 0 1.9.5 2.2 1.4l1.8-.7c-.5-1.5-1.8-2.4-4-2.4-2.4 0-4 1.3-4 3 0 1.8 1.5 2.2 3.1 2.6 1.4.3 2 .8 2 1.4 0 .9-.8 1.4-2 1.4-1.3 0-2.3-.6-2.7-1.7l-1.9.7c.7 1.8 2.2 2.8 4.6 2.8 2.5 0 4.1-1.3 4.1-3.2zm8.6-6.1h-5v9h2v-7.3h3v-1.7z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Docker",
+      category: "DevOps",
+      color: "text-blue-500",
+      bgHover: "hover:bg-blue-500/10",
+      borderHover: "hover:border-blue-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M22 13.5c0-.9-.7-1.7-1.7-1.7h-1v-2.3c0-1.2-1-2.1-2.1-2.1h-3.4V4.9c0-.6-.5-1.1-1.1-1.1H9.9C9.3 3.8 8.8 4.3 8.8 4.9v2.5H5.4C4.3 7.4 3.3 8.3 3.3 9.5V11.8h-1C1.3 11.8.6 12.5.6 13.5c0 .9.7 1.6 1.7 1.6h.4v2.7c0 1.3 1 2.3 2.3 2.3h14c1.3 0 2.3-1 2.3-2.3v-2.7h.4c.9 0 1.7-.7 1.7-1.6zm-17.6.6c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.4 1-1 1zm4 0c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm4 0c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm4 0c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1z"/>
+        </svg>
+      ),
+    }
   ];
+
 
   return (
     <section id="showcase" className="py-20 relative overflow-hidden">
@@ -305,21 +398,45 @@ export default function Showcase() {
 
           {activeTab === "tech-stack" && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6"
             >
               {TECH_STACK.map((tech) => (
-                <div
+                <motion.div
                   key={tech.name}
-                  className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-cyan-500/50 hover:bg-zinc-800/80 transition-all cursor-default"
+                  variants={{
+                    hidden: { opacity: 0, y: 20, scale: 0.9 },
+                    visible: { opacity: 1, y: 0, scale: 1 }
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`relative overflow-hidden group p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 backdrop-blur-sm transition-all duration-300 ${tech.borderHover} ${tech.bgHover} flex flex-col items-center justify-center gap-4 cursor-pointer`}
                 >
-                  <span className="text-3xl">{tech.dot}</span>
-                  <span className={`font-semibold tracking-wide ${tech.color}`}>
-                    {tech.name}
-                  </span>
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/0 via-zinc-800/0 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <div className={`relative z-10 p-4 rounded-xl bg-zinc-900 border border-zinc-800 shadow-xl group-hover:scale-110 transition-transform duration-500 ease-out ${tech.color}`}>
+                    {tech.icon}
+                  </div>
+                  
+                  <div className="relative z-10 text-center">
+                    <h3 className={`font-bold tracking-wide ${tech.color}`}>
+                      {tech.name}
+                    </h3>
+                    <p className="text-xs text-zinc-500 mt-1 uppercase tracking-wider font-semibold">
+                      {tech.category}
+                    </p>
+                  </div>
+                </motion.div>
               ))}
             </motion.div>
           )}
