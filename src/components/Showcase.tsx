@@ -303,6 +303,57 @@ export default function Showcase() {
           <path d="M22 13.5c0-.9-.7-1.7-1.7-1.7h-1v-2.3c0-1.2-1-2.1-2.1-2.1h-3.4V4.9c0-.6-.5-1.1-1.1-1.1H9.9C9.3 3.8 8.8 4.3 8.8 4.9v2.5H5.4C4.3 7.4 3.3 8.3 3.3 9.5V11.8h-1C1.3 11.8.6 12.5.6 13.5c0 .9.7 1.6 1.7 1.6h.4v2.7c0 1.3 1 2.3 2.3 2.3h14c1.3 0 2.3-1 2.3-2.3v-2.7h.4c.9 0 1.7-.7 1.7-1.6zm-17.6.6c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.4 1-1 1zm4 0c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm4 0c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm4 0c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1z"/>
         </svg>
       ),
+    },
+    {
+      name: "Java",
+      category: "Language",
+      color: "text-orange-500",
+      bgHover: "hover:bg-orange-500/10",
+      borderHover: "hover:border-orange-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+        </svg>
+      )
+    },
+    {
+      name: "FastAPI",
+      category: "Backend",
+      color: "text-teal-400",
+      bgHover: "hover:bg-teal-500/10",
+      borderHover: "hover:border-teal-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5l-6.5-3.25L12 3.5l6.5 2.75L12 9.5zM2 9.5v7l10 5 10-5v-7l-10 5-10-5z"/>
+        </svg>
+      )
+    },
+    {
+      name: "Three.js",
+      category: "3D / Visuals",
+      color: "text-zinc-100",
+      bgHover: "hover:bg-zinc-100/10",
+      borderHover: "hover:border-zinc-100/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+          <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+          <line x1="12" y1="22" x2="12" y2="12" />
+          <line x1="22" y1="8.5" x2="12" y2="12" />
+          <line x1="2" y1="8.5" x2="12" y2="12" />
+        </svg>
+      )
+    },
+    {
+      name: "XGBoost",
+      category: "Machine Learning",
+      color: "text-rose-500",
+      bgHover: "hover:bg-rose-500/10",
+      borderHover: "hover:border-rose-500/50",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-4.3a6.5 6.5 0 0 1 2 0zm0-7a1.5 1.5 0 1 1-1.5-1.5A1.5 1.5 0 0 1 13 9.5z"/>
+        </svg>
+      )
     }
   ];
 
