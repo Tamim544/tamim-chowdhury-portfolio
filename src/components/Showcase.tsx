@@ -158,7 +158,15 @@ export default function Showcase() {
             }
           ];
 
-          validRepos = [...privateRepos, ...validRepos];
+          validRepos = [...privateRepos, ...validRepos].map((r: any) => {
+            if (r.name === "tamim-chowdhury-portfolio") {
+              return {
+                ...r,
+                description: "🌌 High-end, immersive developer portfolio with 3D Canvas, orbital physics, and cinematic scroll"
+              };
+            }
+            return r;
+          });
 
           const priorityRepos = [
             "Delhi-Pollution-Warning-System",
@@ -169,7 +177,7 @@ export default function Showcase() {
             "Face-recognition-api",
             "Safe-pass-",
             "Service-Booking-Apps",
-            "Portfolio"
+            "tamim-chowdhury-portfolio"
           ];
           
           validRepos.sort((a, b) => {

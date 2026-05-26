@@ -27,6 +27,9 @@ jobs:
           cache: npm
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          static_site_generator: next
+          generator_config_file: ./next.config.mjs
       - name: Install dependencies
         run: npm ci
       - name: Build with Next.js
