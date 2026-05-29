@@ -166,16 +166,6 @@ export default function Showcase() {
               language: "TypeScript",
               homepage: "",
               private: true
-            },
-            {
-              id: 9000004,
-              name: "Material-Properties-AI",
-              description: "Predicts material properties from SMILES strings using advanced XGBoost models and RDKit. (Private)",
-              html_url: "#",
-              stargazers_count: 0,
-              language: "Python",
-              homepage: "",
-              private: true
             }
           ];
 
@@ -193,7 +183,6 @@ export default function Showcase() {
             "Delhi-Pollution-Warning-System",
             "Aura-RAG-Enterprise",
             "NutriMind-OS",
-            "Material-Properties-AI",
             "Zuri-AI-Best-Friend-Assistant",
             "Face-recognition-api",
             "Safe-pass-",
