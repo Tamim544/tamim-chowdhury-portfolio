@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ExternalLink, Star, Code2, Terminal } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { ExternalLink, Star, Code2, Terminal, X, Lock } from "lucide-react";
 
 interface Repo {
   id: number;
@@ -12,9 +12,10 @@ interface Repo {
   stargazers_count: number;
   language: string;
   homepage: string;
+  private?: boolean;
 }
 
-const ProjectCard = ({ repo }: { repo: Repo }) => {
+const ProjectCard = ({ repo, onSelectPrivateRepo }: { repo: Repo; onSelectPrivateRepo: (repo: Repo) => void }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -43,6 +44,13 @@ const ProjectCard = ({ repo }: { repo: Repo }) => {
 
   return (
     <motion.div
+      onClick={() => {
+        if (repo.html_url === "#" || repo.private) {
+          onSelectPrivateRepo(repo);
+        } else {
+          window.open(repo.html_url, "_blank", "noopener,noreferrer");
+        }
+      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -59,7 +67,14 @@ const ProjectCard = ({ repo }: { repo: Repo }) => {
           </div>
           <div className="flex gap-2">
             <a
-              href={repo.html_url}
+              href={repo.html_url === "#" ? undefined : repo.html_url}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (repo.html_url === "#" || repo.private) {
+                  e.preventDefault();
+                  onSelectPrivateRepo(repo);
+                }
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-white/10 transition-colors text-zinc-400 hover:text-white"
@@ -69,6 +84,7 @@ const ProjectCard = ({ repo }: { repo: Repo }) => {
             {repo.homepage && (
               <a
                 href={repo.homepage}
+                onClick={(e) => e.stopPropagation()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full hover:bg-white/10 transition-colors text-zinc-400 hover:text-white"
@@ -107,6 +123,7 @@ export default function Showcase() {
   const [activeTab, setActiveTab] = useState("projects");
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loadingRepos, setLoadingRepos] = useState(true);
+  const [selectedPrivateRepo, setSelectedPrivateRepo] = useState<Repo | null>(null);
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -127,7 +144,8 @@ export default function Showcase() {
               html_url: "#",
               stargazers_count: 0,
               language: "Python",
-              homepage: ""
+              homepage: "",
+              private: true
             },
             {
               id: 9000002,
@@ -136,7 +154,8 @@ export default function Showcase() {
               html_url: "#",
               stargazers_count: 0,
               language: "Python",
-              homepage: ""
+              homepage: "",
+              private: true
             },
             {
               id: 9000003,
@@ -145,7 +164,8 @@ export default function Showcase() {
               html_url: "#",
               stargazers_count: 0,
               language: "TypeScript",
-              homepage: ""
+              homepage: "",
+              private: true
             },
             {
               id: 9000004,
@@ -154,7 +174,8 @@ export default function Showcase() {
               html_url: "#",
               stargazers_count: 0,
               language: "Python",
-              homepage: ""
+              homepage: "",
+              private: true
             }
           ];
 
@@ -406,7 +427,7 @@ export default function Showcase() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {repos.length > 0 ? (
-                    repos.map((repo) => <ProjectCard key={repo.id} repo={repo} />)
+                    repos.map((repo) => <ProjectCard key={repo.id} repo={repo} onSelectPrivateRepo={setSelectedPrivateRepo} />)
                   ) : (
                     <div className="col-span-full text-center w-full text-zinc-500 py-20">
                       No public repositories found.
@@ -493,6 +514,59 @@ export default function Showcase() {
           )}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedPrivateRepo && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl shadow-2xl max-w-md w-full relative"
+            >
+              <button
+                onClick={() => setSelectedPrivateRepo(null)}
+                className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors"
+              >
+                <X size={20} />
+              </button>
+              
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+                  <Lock size={20} />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-white uppercase tracking-tight">Private Repository</h3>
+              </div>
+              
+              <h4 className="text-lg font-bold text-cyan-400 mb-2">
+                {selectedPrivateRepo.name.replace(/-/g, " ")}
+              </h4>
+              
+              <p className="text-zinc-400 mb-6 text-sm leading-relaxed">
+                This repository is currently private. If you are interested in learning more about the implementation, source code, or architecture of this project, please feel free to reach out directly.
+              </p>
+              
+              <div className="border-t border-zinc-800 pt-4 space-y-3">
+                <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Contact Info</p>
+                <div className="flex flex-col gap-2 text-sm text-zinc-300">
+                  <div className="flex items-center gap-2">
+                    <span className="text-cyan-500 font-semibold">Email:</span>
+                    <a href="mailto:tamim.choudhury2890@gmail.com" className="hover:text-cyan-400 transition-colors">
+                      tamim.choudhury2890@gmail.com
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-purple-500 font-semibold">Phone:</span>
+                    <a href="tel:+917827851769" className="hover:text-purple-400 transition-colors">
+                      +91 7827851769
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
