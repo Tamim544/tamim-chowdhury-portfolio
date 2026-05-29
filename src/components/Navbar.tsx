@@ -59,8 +59,8 @@ export default function Navbar() {
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">Email</p>
-                    <a href="mailto:tamim23544@iiitd.ac.in" className="text-zinc-200 hover:text-cyan-400 transition-colors">
-                      tamim23544@iiitd.ac.in
+                    <a href="mailto:tamim.choudhury2890@gmail.com" className="text-zinc-200 hover:text-cyan-400 transition-colors">
+                      tamim.choudhury2890@gmail.com
                     </a>
                   </div>
                 </div>
