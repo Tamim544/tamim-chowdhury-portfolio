@@ -62,7 +62,7 @@ export default function Hero() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex flex-col space-y-6 lg:justify-center items-start h-full"
+          className="flex flex-col space-y-6 lg:justify-center items-center lg:items-start text-center lg:text-left h-full"
         >
           <motion.h2
             variants={item}
@@ -73,7 +73,7 @@ export default function Hero() {
 
           <motion.h1
             variants={item}
-            className="text-5xl sm:text-6xl md:text-7xl font-heading font-black leading-tight tracking-tight uppercase"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black leading-tight tracking-tight uppercase"
           >
             WELCOME TO MY <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
@@ -81,29 +81,29 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          <motion.div variants={item} className="flex flex-col space-y-4">
-            <p className="text-xl sm:text-2xl text-zinc-300 font-medium">
+          <motion.div variants={item} className="flex flex-col space-y-4 items-center lg:items-start">
+            <p className="text-lg sm:text-xl lg:text-2xl text-zinc-300 font-medium">
               <span className="inline-block border-r-2 border-cyan-500 pr-2 animate-pulse">
                 Front-End / Full-Stack Developer
               </span>
             </p>
-            <p className="max-w-md text-zinc-400 leading-relaxed text-sm sm:text-base">
+            <p className="max-w-md text-zinc-400 leading-relaxed text-sm sm:text-base mx-auto lg:mx-0">
               B.Tech CSE student at **IIIT-Delhi**, ICCR Scholar. 
               Specializing in building sleek, modern web experiences with Next.js and Tailwind.
             </p>
           </motion.div>
 
-          <motion.div variants={item} className="flex flex-wrap gap-4 pt-4">
+          <motion.div variants={item} className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
             <button
               onClick={() => document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-105 active:scale-95 uppercase tracking-wide text-sm"
+              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-105 active:scale-95 uppercase tracking-wide text-xs sm:text-sm"
             >
               View Projects
             </button>
             <a
               href={`${basePath}/CV_Tamim_Chowdhury.pdf`}
               download="CV_Tamim_Chowdhury.pdf"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 bg-zinc-900/50 text-white font-bold hover:bg-zinc-800 transition-all flex items-center justify-center hover:scale-105 active:scale-95 uppercase tracking-wide text-sm"
+              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 bg-zinc-900/50 text-white font-bold hover:bg-zinc-800 transition-all flex items-center justify-center hover:scale-105 active:scale-95 uppercase tracking-wide text-xs sm:text-sm"
             >
               Download CV
             </a>

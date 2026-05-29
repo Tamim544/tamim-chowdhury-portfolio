@@ -376,7 +376,7 @@ export default function Showcase() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2 capitalize font-medium rounded-full transition-all ${
+              className={`px-4 sm:px-6 py-2 text-sm sm:text-base capitalize font-medium rounded-full transition-all ${
                 activeTab === tab
                   ? "bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]"
                   : "text-zinc-400 hover:text-white bg-zinc-900/50 border border-zinc-800/50"
